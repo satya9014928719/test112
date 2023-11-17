@@ -1,0 +1,346 @@
+1. Write a program to print first N terms of a Fibonacci series
+ Ans).
+  #include <stdio.h>
+
+void generateFibonacci(int n) {
+    int first = 0, second = 1, next, i;
+
+    printf("First %d terms of Fibonacci series: \n", n);
+
+    for (i = 0; i < n; i++) {
+        printf("%d ", first);
+        next = first + second;
+        first = second;
+        second = next;
+    }
+}
+
+int main() {
+    int n;
+
+    printf("Enter the number of terms: ");
+    scanf("%d", &n);
+
+    generateFibonacci(n);
+
+    return 0;
+}
+
+
+2. Write a program to calculate HCF of two numbers
+Ans).
+   #include <stdio.h>
+
+// Function to find HCF of two numbers
+int findHCF(int a, int b) {
+    while (a != b) {
+        if (a > b)
+            a -= b;
+        else
+            b -= a;
+    }
+    return a;
+}
+
+int main() {
+    int num1, num2;
+
+    printf("Enter first number: ");
+    scanf("%d", &num1);
+    printf("Enter second number: ");
+    scanf("%d", &num2);
+
+    printf("HCF of %d and %d is %d\n", num1, num2, findHCF(num1, num2));
+
+    return 0;
+}
+
+
+3. Write a program to display following patterns
+Ans).
+ 
+a).#include <stdio.h>
+int main()
+{
+    int i, j, rows;
+    printf("Enter the number of rows: \n");
+    
+    // taking input for number of rows
+    scanf("%d", &rows);
+    
+    // Outer loop to handle number of rows
+    for (i = 1; i <= rows; i++)
+    {
+        // Inner loop to handle number of columns
+        for (j = 1; j <= rows; j++)
+        {
+            if (j <= rows - i)
+            {
+                 // Printing spaces
+                printf(" ");
+            }
+            else
+            {
+                 // Printing stars
+                printf("*");
+            }
+        }
+        // Ending line after each row
+        printf("\n");
+    }
+    return 0;
+}
+
+   OUTPUT:
+   ------
+       *
+     * *
+   * * *
+ * * * *
+
+
+b).
+   #include <stdio.h>
+int main() {
+   int i, space, rows, k = 0;
+   printf("Enter the number of rows: ");
+   scanf("%d", &rows);
+   for (i = 1; i <= rows; ++i, k = 0) {
+      for (space = 1; space <= rows - i; ++space) {
+         printf("  ");
+      }
+      while (k != 2 * i - 1) {
+         printf("* ");
+         ++k;
+      }
+      printf("\n");
+   }
+   return 0;
+}
+
+  OUTPUT:
+ ---------
+        *
+      * * *
+    * * * * *
+  * * * * * * *
+ 
+c).
+    #include <stdio.h>
+#include <conio.h>
+void main()
+{
+    // declare the local variables
+    int i, j, rows=4, k, m;
+    printf (" Enter a number to define the rows: \n");
+
+    printf("\n");
+    // outer loop define the total rows and i should be less than equal to rows
+    for ( i = 1; i <= rows; i++)
+    {
+        // inner loop define j should be less than equal to rows- i
+        for ( j = 1; j <= rows-i; j++)
+        {
+            printf (" ");
+        }
+        // use for loop where k is less than equal to i
+        for ( k = 1; k <= i; k++)
+        {
+            printf ("%d", k); // print the number
+        }
+        for (m = i-1; m >=1; m--)
+        {
+            printf("%d", m); // print the number
+        }
+        printf ("\n");
+    }
+    getch();
+}
+  
+  output:
+----------
+   1
+  121
+ 12321
+1234321
+
+
+d).
+  
+   #include <stdio.h>
+
+void main()
+{
+   int i, j, rows=4;
+
+   for (i = 1; i <= rows; i++)
+   {
+      for (j = 1; j <= rows - i + 1; j++)
+         printf("%c ", (char)(j + 64));
+
+      printf("\n");
+   }
+}
+
+    output:
+-------------
+  A B C D
+  A B C
+  A B
+  A
+
+
+e).
+ #include <stdio.h>
+
+int main() {
+    int n = 4; // Number of rows
+
+    for (int i = 0; i < n; ++i) {
+        // Print spaces
+        for (int j = 0; j < i; ++j) {
+            printf("   ");
+        }
+
+        // Print increasing characters
+        for (char k = 'A'; k < 'A' + n - i; ++k) {
+            printf("%c ", k);
+        }
+
+        // Print decreasing characters
+        for (char l = 'A' + n - i - 2; l >= 'A'; --l) {
+            printf("%c ", l);
+        }
+
+        // Move to the next line
+        printf("\n");
+    }
+
+    return 0;
+}
+
+  OUTPUT:
+----------
+       A B C D C B A 
+         A B C B A  
+           A B A
+             A 
+
+
+f).
+
+   #include <stdio.h>
+
+int main() {
+    int n = 4; // Number of rows
+
+    for (int i = 0; i < n; ++i) {
+        // Print spaces
+        for (int j = 0; j < i; ++j) {
+            printf("   ");
+        }
+
+        // Print binary numbers
+        for (int k = 0; k < n - i; ++k) {
+            if (k == 0 || k == n - i - 1) {
+                printf("1 ");
+            } else {
+                printf("0 ");
+            }
+        }
+
+        // Move to the next line
+        printf("\n");
+    }
+
+    return 0;
+}
+   
+  output :
+-----------
+  1 0 0 0 0 0 1
+    1 0 0 0 1
+      1 0 1
+        1
+
+g).
+    
+   #include <stdio.h>
+int main(void) {
+  int n=5;
+
+  int spaces=n-1;
+  int stars=1;
+  for(int i=1;i<=n;i++)
+  {
+    for(int j=1;j<=spaces;j++)
+    {
+      printf(" ");
+    }
+    for(int k=1;k<=stars;k++)
+    {
+      printf("*");
+    }
+    if(spaces>i)
+    {
+      spaces=spaces-1;
+      stars=stars+2;
+    }
+    if(spaces<i)
+    {
+      spaces=spaces+1;
+      stars=stars-2;
+    }
+    printf("\n");
+  }
+  return 0;
+  }
+
+ output:
+-----------
+    *
+   ***
+  *****
+   ***
+    *
+
+h).
+  #include <stdio.h>
+#include <conio.h>
+void main()
+{
+    // declare the local variables
+    int i, j, rows=5;
+
+    printf("\n");
+    for (i = rows; i > 0; i--) // define the outer loop
+    {
+        for (j = i; j > 0; j--) // define the inner loop
+        {
+            printf ("%d ", j);
+        }
+        printf ("\n");
+    }
+    getch();
+}
+
+
+   output:
+  ---------
+  5 4 3 2 1 
+  4 3 2 1 
+  3 2 1 
+  2 1
+  1
+
+
+
+
+
+
+
+
+
+
+
+
